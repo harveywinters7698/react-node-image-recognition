@@ -13,7 +13,11 @@ app.get('/hello', function (req, res) {
     res.send("hello")
 });
 app.use('/predict', predictRouter);
+app.get('/', function (req, res) {
+    return res.sendFile(path.join(__dirname, "build", "index.html"))
+})
 const port = process.env.PORT || '8080';
+
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port);
